@@ -5,6 +5,7 @@ import themeColors from '../themeColor'
 import { FiMenu, FiShoppingCart, FiUser, FiX } from 'react-icons/fi'
 import { useRouter } from 'next/navigation'
 import { useCart } from "@/app/context/CartContext";
+import SearchBar from '../../search/SearchBar'
 
 
 const Navbar = () => {
@@ -12,13 +13,14 @@ const Navbar = () => {
     const [menuOpen, setMenuOpen] = useState(false);
     const toggleMenu = () => setMenuOpen(!menuOpen);
     const router = useRouter();
-    const [search, setSearch] = useState("");
+    // const [search, setSearch] = useState("");
 
-    const handleSearch = (e) => {
-        if (e.key === "Enter" && search.trim() !== "") {
-            router.push(`/search?query=${search}`);
-        }
-    }; const { cart } = useCart();
+    // const handleSearch = (e) => {
+    //     if (e.key === "Enter" && search.trim() !== "") {
+    //         router.push(`/search?query=${search}`);
+    //     }
+    // };
+    const { cart } = useCart();
 
 
     const categories = [
@@ -58,7 +60,7 @@ const Navbar = () => {
             </ul>
 
             <div className="flex items-center gap-4">
-                <input
+                {/* <input
                     style={{ background: theme.background, color: theme.text }}
                     type="text"
                     placeholder="Search hoodies…"
@@ -66,7 +68,13 @@ const Navbar = () => {
                     onChange={(e) => setSearch(e.target.value)}
                     onKeyDown={handleSearch}
                     className="p-2 rounded outline-none placeholder-gray-400 hidden lg:block"
-                />
+                /> */}
+
+                <div className="lg:block w-64">
+                    <SearchBar />
+                </div>
+
+
                 <FiUser size={24} className="cursor-pointer" />
                 <div className="relative">
                     <FiShoppingCart

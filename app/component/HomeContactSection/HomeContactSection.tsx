@@ -1,104 +1,177 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { FiMail, FiPhone, FiMapPin } from "react-icons/fi";
 import themeColors from "../themeColor";
 
 const HomeContactSection = () => {
-    const theme = themeColors.dark;
+  const theme = themeColors.dark;
 
-    return (
-        <section
-            style={{ background: theme.background, color: theme.text }}
-            className="py-24 px-8"
-        >
-            <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-20">
-                <div style={{ background: theme.background, color: theme.text }} className="flex flex-col justify-center">
-                    <h2 className="text-5xl font-bold leading-tight mb-6">
-                        Let’s Talk
-                        <span className="block ">with HoodAnix Team</span>
-                    </h2>
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
 
-                    <p className=" text-lg mb-10">
-                        Have questions about your hoodie order, size guide, or custom design?
-                        We’re here to help you anytime.
-                        Your comfort, your style — our responsibility.
-                    </p>
+  const [toast, setToast] = useState({ visible: false, message: "", type: "" });
+  const [isSending, setIsSending] = useState(false);
 
-                    <div className="space-y-6">
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
 
-                        <div className="flex items-center gap-4">
-                            <FiPhone className=" text-3xl" />
-                            <div>
-                                <h4 className="text-xl font-semibold">Phone</h4>
-                                <p >+92 300 1234567</p>
-                            </div>
-                        </div>
+  const showToast = (message, type = "success") => {
+    setToast({ visible: true, message, type });
+    setTimeout(() => {
+      setToast({ visible: false, message: "", type: "" });
+    }, 3000);
+  };
 
-                        <div className="flex items-center gap-4">
-                            <FiMail className=" text-3xl" />
-                            <div>
-                                <h4 className="text-xl font-semibold">Email</h4>
-                                <p >support@hoodanix.com</p>
-                            </div>
-                        </div>
+  const validateForm = () => {
+    const { name, email, message } = formData;
 
-                        <div className="flex items-center gap-4">
-                            <FiMapPin className=" text-3xl" />
-                            <div>
-                                <h4 className="text-xl font-semibold">Address</h4>
-                                <p >Karachi, Pakistan</p>
-                            </div>
-                        </div>
+    if (!name.trim()) return "Please enter your name.";
+    if (/\d/.test(name)) return "Name cannot contain numbers.";
+    if (!email.trim()) return "Please enter your email.";
+    if (!email.includes("@gmail.com")) return "Email must be a valid Gmail address.";
+    if (!message.trim()) return "Please enter your message.";
 
-                    </div>
-                </div>
+    return null;
+  };
 
-                <div className="border p-10 rounded-3xl backdrop-blur-xl"
-                    style={{ background: theme.background, color: theme.text }}
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-                >
-                    <form className="space-y-8">
+    const error = validateForm();
+    if (error) {
+      showToast(error, "error");
+      return;
+    }
 
-                        <div>
-                            <label className="block mb-2">Full Name</label>
-                            <input
-                                type="text"
-                                className="w-full p-3 border
-                           rounded-xl outline-none"
-                            />
-                        </div>
+    setIsSending(true); // Button will show "Sending..."
 
-                        <div>
-                            <label className="block mb-2">Email</label>
-                            <input
-                                type="email"
-                                className="w-full p-3 border 
-                           rounded-xl outline-none focus:border-rgb(26 ,68, 80)"
-                            />
-                        </div>
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
 
-                        <div>
-                            <label className="block mb-2">Message</label>
-                            <textarea
-                                className="w-full p-3 border
-                           rounded-xl "
-                            ></textarea>
-                        </div>
+      const data = await res.json();
 
-                        <button
-                            style={{ background: theme.text, color: theme.background }}
+      if (data.success) {
+        showToast("Message sent successfully!", "success");
+        setFormData({ name: "", email: "", message: "" });
+      } else {
+        showToast("Failed to send message. Try again.", "error");
+      }
+    } catch (err) {
+      showToast("Something went wrong. Try again.", "error");
+    }
 
-                            className="w-full font-semibold 
-                         py-3 rounded-xl transition cursor-pointer">
-                            Send Message
-                        </button>
+    setIsSending(false); // Reset button text
+  };
 
-                    </form>
-                </div>
+  return (
+    <section style={{ background: theme.background, color: theme.text }} className="py-24 px-8">
+      <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-20">
+        {/* Left Side */}
+        <div className="flex flex-col justify-center">
+          <h2 className="text-5xl font-bold leading-tight mb-6">
+            Let’s Talk
+            <span className="block">with HoodAnix Team</span>
+          </h2>
+          <p className="text-lg mb-10">
+            Have questions about your hoodie order, size guide, or custom design? We’re here to help.
+          </p>
+
+          <div className="space-y-6">
+            <div className="flex items-center gap-4">
+              <FiPhone className="text-3xl" />
+              <div>
+                <h4 className="text-xl font-semibold">Phone</h4>
+                <p>+92 370 2675457</p>
+              </div>
             </div>
-        </section>
-    );
+            <div className="flex items-center gap-4">
+              <FiMail className="text-3xl" />
+              <div>
+                <h4 className="text-xl font-semibold">Email</h4>
+                <p>bilalusman1291@gmail.com</p>
+              </div>
+            </div>
+            <div className="flex items-center gap-4">
+              <FiMapPin className="text-3xl" />
+              <div>
+                <h4 className="text-xl font-semibold">Address</h4>
+                <p>Karachi, Pakistan</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Right Side Form */}
+        <div className="border p-10 rounded-3xl relative" style={{ background: theme.background, color: theme.text }}>
+          <form className="space-y-8" onSubmit={handleSubmit}>
+            <div>
+              <label className="block mb-2">Full Name</label>
+              <input
+                type="text"
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
+                className="w-full p-3 border rounded-xl outline-none"
+              />
+            </div>
+
+            <div>
+              <label className="block mb-2">Email</label>
+              <input
+                type="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                className="w-full p-3 border rounded-xl outline-none"
+              />
+            </div>
+
+            <div>
+              <label className="block mb-2">Message</label>
+              <textarea
+                name="message"
+                value={formData.message}
+                onChange={handleChange}
+                className="w-full p-3 border rounded-xl outline-none"
+              ></textarea>
+            </div>
+
+            <button
+              style={{ background: theme.text, color: theme.background }}
+              className="w-full font-semibold py-3 rounded-xl cursor-pointer"
+              type="submit"
+              disabled={isSending}
+            >
+              {isSending ? "Sending..." : "Send Message"}
+            </button>
+          </form>
+
+          {/* Toast Notification */}
+          {toast.visible && (
+            <div
+              className={`absolute top-4 right-4 px-6 py-3 rounded shadow-lg text-white font-semibold ${
+                toast.type === "success" ? "bg-green-500" : "bg-red-500"
+              }`}
+            >
+              {toast.message}
+            </div>
+          )}
+        </div>
+      </div>
+    </section>
+  );
 };
 
 export default HomeContactSection;

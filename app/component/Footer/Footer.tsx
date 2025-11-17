@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { FiFacebook, FiInstagram, FiTwitter, FiMapPin, FiMail, FiPhone } from "react-icons/fi";
 import themeColors from "../themeColor";
 import { useRouter } from "next/navigation";
@@ -8,6 +8,37 @@ import { useRouter } from "next/navigation";
 const Footer = () => {
     const theme = themeColors.dark;
     const router = useRouter();
+
+    const [formData, setFormData] = useState({
+        name: "",
+        email: "",
+        message: "",
+    });
+
+    const handleChange = (e) => {
+        setFormData(e.target.value);
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        const res = await fetch("/api/contact", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(formData),
+        });
+
+        const data = await res.json();
+
+        if (data.success) {
+            alert("Message sent successfully!");
+            setFormData({ name: "", email: "", message: "" });
+        } else {
+            alert("Failed to send message. Try again.");
+        }
+    };
 
 
     return (
@@ -58,28 +89,32 @@ const Footer = () => {
                     </p>
                 </div>
 
-                {/* 4. NEWSLETTER */}
                 <div>
                     <h3 className="text-xl font-semibold mb-4">Stay Updated</h3>
                     <p className="text-black mb-4">
                         Join our newsletter for exclusive hoodie drops & discounts.
                     </p>
 
-                    <input
-                        type="email"
-                        placeholder="Enter your email"
-                        className="w-full p-3 rounded-lg bg-white/10 border border-gray-700 outline-none mb-4 placeholder-gray-400"
-                    />
 
-                    <button
-                        style={{ background: theme.text, color: theme.background }}
-                        className="w-full py-3 rounded-lg font-semibold cursor-pointer transition">
-                        Subscribe
-                    </button>
+                    <form onSubmit={handleSubmit}>
+                        <input
+                            value={formData.email}
+                            onChange={handleChange}
+                            type="email"
+                            placeholder="Enter your email"
+                            className="w-full p-3 rounded-lg bg-white/10 border border-gray-700 outline-none mb-4 placeholder-gray-400"
+                        />
+
+                        <button
+                            style={{ background: theme.text, color: theme.background }}
+                            className="w-full py-3 rounded-lg font-semibold cursor-pointer transition">
+                            Subscribe
+                        </button>
+
+                    </form>
                 </div>
             </div>
 
-            {/* COPYRIGHT BOTTOM */}
             <div className="text-center text-gray-400 mt-16 pt-6 border-t border-gray-800">
                 © {new Date().getFullYear()} HoodAnix. All rights reserved.
             </div>
