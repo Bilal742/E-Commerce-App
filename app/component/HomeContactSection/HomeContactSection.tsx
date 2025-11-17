@@ -16,14 +16,15 @@ const HomeContactSection = () => {
   const [toast, setToast] = useState({ visible: false, message: "", type: "" });
   const [isSending, setIsSending] = useState(false);
 
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
-  };
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  setFormData({
+    ...formData,
+    [e.target.name]: e.target.value,
+  });
+};
 
-  const showToast = (message, type = "success") => {
+
+  const showToast = (message: string, type = "success") => {
     setToast({ visible: true, message, type });
     setTimeout(() => {
       setToast({ visible: false, message: "", type: "" });
@@ -42,7 +43,7 @@ const HomeContactSection = () => {
     return null;
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     const error = validateForm();

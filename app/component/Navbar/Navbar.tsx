@@ -14,13 +14,9 @@ const Navbar = () => {
     const toggleMenu = () => setMenuOpen(!menuOpen);
     const router = useRouter();
     const { cart } = useCart();
-    const { data: session, status } = useSession();
+    const { data: session } = useSession();
 
-    if (status === "loading") {
-        return <p>Loading...</p>;
-    }
-
-
+    // if (status === "loading") return null;
     const categories = [
         { name: "Men", slug: "men" },
         { name: "Women", slug: "women" },
@@ -70,21 +66,25 @@ const Navbar = () => {
                 <div className="hidden lg:block w-48 sm:w-60 md:w-64">
                     <SearchBar />
                 </div>
-                {/* <FiUser /> */}
 
                 {session ? (
                     <>
                         <p>Welcome, {session.user?.name}</p>
-                        <button onClick={() => signOut({ callbackUrl: "/" })} className="px-3 py-1 bg-red-600 rounded">
+                        <button
+                            onClick={() => signOut({ callbackUrl: "/" })}
+                            className="px-3 py-1 bg-red-600 rounded"
+                        >
                             Logout
                         </button>
                     </>
                 ) : (
-                    <button onClick={() => signIn("google", { callbackUrl: "/" })} className="px-3 py-1 bg-blue-600 rounded flex items-center gap-1">
-                        <FiUser /> Continue with Google
+                    <button
+                        onClick={() => signIn("google", { callbackUrl: "/" })}
+                        className="cursor-pointer"
+                    >
+                        <FiUser size={24} />
                     </button>
                 )}
-
 
                 <div className="relative">
                     <FiShoppingCart
