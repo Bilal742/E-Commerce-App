@@ -38,7 +38,7 @@ const HomeServicesSection = () => {
   return (
     <section
       style={{ background: theme.background, color: theme.text }}
-      className="py-24 px-8"
+      className="py-28 px-8"
     >
       <h2 className="text-5xl font-bold text-center mb-16 tracking-wide"
       style={{ background: theme.background, color: theme.text }}

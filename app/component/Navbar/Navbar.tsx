@@ -7,21 +7,12 @@ import { useRouter } from 'next/navigation'
 import { useCart } from "@/app/context/CartContext";
 import SearchBar from '../../search/SearchBar'
 
-
 const Navbar = () => {
     const theme = themeColors.dark;
     const [menuOpen, setMenuOpen] = useState(false);
     const toggleMenu = () => setMenuOpen(!menuOpen);
     const router = useRouter();
-    // const [search, setSearch] = useState("");
-
-    // const handleSearch = (e) => {
-    //     if (e.key === "Enter" && search.trim() !== "") {
-    //         router.push(`/search?query=${search}`);
-    //     }
-    // };
     const { cart } = useCart();
-
 
     const categories = [
         { name: "Men", slug: "men" },
@@ -33,16 +24,26 @@ const Navbar = () => {
     ];
 
     return (
-        <nav style={{ background: theme.background, color: theme.text }} className="fixed top-0 left-0 w-full flex justify-between items-center px-40 py-4 z-50">
+        <nav
+            style={{ background: theme.background, color: theme.text }}
+            className="fixed top-0 left-0 w-full flex justify-between items-center px-4 sm:px-6 md:px-20 py-4 z-50 shadow-md"
+        >
+            <h1
+                className="font-bold text-xl sm:text-2xl cursor-pointer"
+                onClick={() => router.push("/")}
+            >
+                HoodAnix
+            </h1>
 
-            <h1 className="font-bold text-2xl cursor-pointer" onClick={() => router.push("/")}>HoodAnix</h1>
-
-            <ul className="hidden lg:flex gap-6 items-center">
+            <ul className="hidden lg:flex gap-4 lg:gap-6 items-center">
                 <li className='cursor-pointer' onClick={() => router.push("/")}>Home</li>
                 <li className='cursor-pointer' onClick={() => router.push("/about")}>About</li>
                 <li className="relative group cursor-pointer">
-                    Categorys ▼
-                    <ul style={{ background: theme.background }} className="absolute top-full left-0 mt-1 w-48 p-2 list-none opacity-0 group-hover:opacity-100 transition-opacity duration-200 shadow-lg rounded">
+                    Categories ▼
+                    <ul
+                        style={{ background: theme.background }}
+                        className="absolute top-full left-0 mt-1 w-48 p-2 list-none opacity-0 group-hover:opacity-100 transition-opacity duration-200 shadow-lg rounded"
+                    >
                         {categories.map((cat, index) => (
                             <li
                                 key={index}
@@ -54,28 +55,17 @@ const Navbar = () => {
                         ))}
                     </ul>
                 </li>
-
                 <li className='cursor-pointer' onClick={() => router.push("/shop")}>Shop</li>
                 <li className='cursor-pointer' onClick={() => router.push("/contact")}>Contact</li>
             </ul>
 
-            <div className="flex items-center gap-4">
-                {/* <input
-                    style={{ background: theme.background, color: theme.text }}
-                    type="text"
-                    placeholder="Search hoodies…"
-                    value={search}
-                    onChange={(e) => setSearch(e.target.value)}
-                    onKeyDown={handleSearch}
-                    className="p-2 rounded outline-none placeholder-gray-400 hidden lg:block"
-                /> */}
-
-                <div className="lg:block w-64">
+            <div className="flex items-center gap-5 sm:gap-4">
+                <div className="hidden lg:block w-48 sm:w-60 md:w-64">
                     <SearchBar />
                 </div>
 
+                <FiUser size={24} className="cursor-pointer " />
 
-                <FiUser size={24} className="cursor-pointer" />
                 <div className="relative">
                     <FiShoppingCart
                         size={24}
@@ -88,24 +78,38 @@ const Navbar = () => {
                         </span>
                     )}
                 </div>
+
                 <div className="lg:hidden cursor-pointer" onClick={toggleMenu}>
                     {menuOpen ? <FiX size={24} /> : <FiMenu size={24} />}
                 </div>
             </div>
 
             {menuOpen && (
-                <ul style={{ background: theme.background }} className="absolute top-full left-0 w-full flex flex-col gap-4 p-4 lg:hidden">
-                    <li className='cursor-pointer' onClick={() => router.push("/")}>Home</li>
-                    <li className='cursor-pointer' onClick={() => router.push("/about")}>About</li>
+                <ul
+                    style={{ background: theme.background }}
+                    className="absolute top-full left-0 w-full flex flex-col gap-2 p-4 lg:hidden shadow-lg"
+                >
+                    <li
+                        className='cursor-pointer py-1'
+                        onClick={() => { router.push("/"); setMenuOpen(false); }}
+                    >
+                        Home
+                    </li>
+                    <li
+                        className='cursor-pointer py-1'
+                        onClick={() => { router.push("/about"); setMenuOpen(false); }}
+                    >
+                        About
+                    </li>
 
-                    <li className="cursor-pointer">
+                    <li className="cursor-pointer py-1">
                         Categories
-                        <ul className="pl-4 mt-2 flex flex-col gap-2">
+                        <ul className="pl-4 mt-1 flex flex-col gap-1">
                             {categories.map((cat, index) => (
                                 <li
                                     key={index}
-                                    className="cursor-pointer"
-                                    onClick={() => router.push(`/category/${cat.slug}`)}
+                                    className="cursor-pointer py-1"
+                                    onClick={() => { router.push(`/category/${cat.slug}`); setMenuOpen(false); }}
                                 >
                                     {cat.name}
                                 </li>
@@ -113,8 +117,22 @@ const Navbar = () => {
                         </ul>
                     </li>
 
-                    <li className='cursor-pointer' onClick={() => router.push("/shop")}>Shop</li>
-                    <li className='cursor-pointer' onClick={() => router.push("/contact")}>Contact</li>
+                    <li
+                        className='cursor-pointer py-1'
+                        onClick={() => { router.push("/shop"); setMenuOpen(false); }}
+                    >
+                        Shop
+                    </li>
+                    <li
+                        className='cursor-pointer py-1'
+                        onClick={() => { router.push("/contact"); setMenuOpen(false); }}
+                    >
+                        Contact
+                    </li>
+
+                    <div className="mt-2">
+                        <SearchBar />
+                    </div>
                 </ul>
             )}
 

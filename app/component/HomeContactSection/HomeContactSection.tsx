@@ -51,7 +51,7 @@ const HomeContactSection = () => {
       return;
     }
 
-    setIsSending(true); // Button will show "Sending..."
+    setIsSending(true);
 
     try {
       const res = await fetch("/api/contact", {
@@ -72,13 +72,12 @@ const HomeContactSection = () => {
       showToast("Something went wrong. Try again.", "error");
     }
 
-    setIsSending(false); // Reset button text
+    setIsSending(false);
   };
 
   return (
-    <section style={{ background: theme.background, color: theme.text }} className="py-24 px-8">
-      <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-20">
-        {/* Left Side */}
+    <section style={{ background: theme.background, color: theme.text }} className="py-28 px-8">
+      <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-20 ">
         <div className="flex flex-col justify-center">
           <h2 className="text-5xl font-bold leading-tight mb-6">
             Let’s Talk
@@ -90,32 +89,31 @@ const HomeContactSection = () => {
 
           <div className="space-y-6">
             <div className="flex items-center gap-4">
-              <FiPhone className="text-3xl" />
+              <FiPhone className="text-2xl" />
               <div>
-                <h4 className="text-xl font-semibold">Phone</h4>
+                <h4 className="text-1xl font-semibold">Phone</h4>
                 <p>+92 370 2675457</p>
               </div>
             </div>
             <div className="flex items-center gap-4">
-              <FiMail className="text-3xl" />
+              <FiMail className="text-2xl" />
               <div>
-                <h4 className="text-xl font-semibold">Email</h4>
+                <h4 className="text-1xl font-semibold">Email</h4>
                 <p>bilalusman1291@gmail.com</p>
               </div>
             </div>
             <div className="flex items-center gap-4">
-              <FiMapPin className="text-3xl" />
+              <FiMapPin className="text-2xl" />
               <div>
-                <h4 className="text-xl font-semibold">Address</h4>
+                <h4 className="text-1xl font-semibold">Address</h4>
                 <p>Karachi, Pakistan</p>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Right Side Form */}
         <div className="border p-10 rounded-3xl relative" style={{ background: theme.background, color: theme.text }}>
-          <form className="space-y-8" onSubmit={handleSubmit}>
+          <form className="space-y-3" onSubmit={handleSubmit}>
             <div>
               <label className="block mb-2">Full Name</label>
               <input
@@ -158,7 +156,6 @@ const HomeContactSection = () => {
             </button>
           </form>
 
-          {/* Toast Notification */}
           {toast.visible && (
             <div
               className={`absolute top-4 right-4 px-6 py-3 rounded shadow-lg text-white font-semibold ${

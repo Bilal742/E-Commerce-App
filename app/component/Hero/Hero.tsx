@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation';
 
 const Hero = () => {
     const theme = themeColors.dark;
-        const router = useRouter();
+    const router = useRouter();
     
     const images = [
         '/Slider_Images/bg.jpg',
@@ -32,15 +32,22 @@ const Hero = () => {
                 backgroundPosition: 'center',
                 color: theme.background
             }}
-            className="h-[700px] flex flex-col justify-center items-center text-center px-10 transition-all duration-1000 opacity-95"
+            className="h-[500px] sm:h-[600px] md:h-[700px] flex flex-col justify-center items-center text-center px-4 sm:px-6 md:px-10 transition-all duration-1000 opacity-95"
         >
-            <h1 className="text-5xl font-bold mb-4 drop-shadow-lg">Welcome to HoodAnix</h1>
-            <p className="text-xl mb-6 drop-shadow-lg">Discover the best hoodies for Men, Women, and Unisex</p>
-            <button style={{ background: theme.background, color: theme.text }} className="px-6 py-3 rounded font-semibold hover:bg-gray-200 transition cursor-pointer" onClick={()=> router.push("/shop")}>
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 drop-shadow-lg">
+                Welcome to HoodAnix
+            </h1>
+            <p className="text-lg sm:text-xl md:text-2xl mb-6 drop-shadow-lg max-w-2xl">
+                Discover the best hoodies for Men, Women, and Unisex
+            </p>
+            <button
+                style={{ background: theme.background, color: theme.text }}
+                className="px-4 sm:px-6 md:px-8 py-2 sm:py-3 md:py-4 rounded font-semibold hover:bg-gray-200 transition cursor-pointer text-sm sm:text-base md:text-lg"
+                onClick={() => router.push("/shop")}
+            >
                 Shop Now
             </button>
         </section>
-
     )
 }
 

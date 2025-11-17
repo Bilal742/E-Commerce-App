@@ -21,9 +21,9 @@ const HomeCategoriesSection = () => {
     return (
         <section
             style={{ background: theme.background, color: theme.text }}
-            className="py-20 px-6 lg:px-10"
+            className="py-28 px-6 lg:px-10"
         >
-            <h2 className="text-4xl font-bold text-center mb-12">Shop by Category</h2>
+            <h2 className="text-5xl font-bold text-center mb-12">Shop by Category</h2>
 
             <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
                 {categories.map((cat, index) => (
