@@ -5,6 +5,13 @@ import themeColors from "@/app/component/themeColor";
 import { useCart } from "../context/CartContext";
 import { toast } from "react-hot-toast";
 
+type CartItem = {
+    cartId: string;
+    name: string;
+    price: number;
+    image: string;
+};
+
 const CartPage = () => {
     const theme = themeColors.dark;
     const { cart, removeFromCart, clearCart, totalPrice } = useCart();
@@ -22,7 +29,7 @@ const CartPage = () => {
             ) : (
                 <div className="space-y-4">
 
-                    {cart.map((item, index) => (
+                    {cart.map((item: CartItem, index: number) => (
                         <div
                             key={index}
                             className="flex flex-col md:flex-row items-center md:items-start gap-4 md:gap-5 border p-4 rounded"
