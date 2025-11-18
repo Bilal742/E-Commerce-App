@@ -10,7 +10,7 @@ export const authOptions = {
   ],
   secret: process.env.NEXTAUTH_SECRET || "fallback_secret",
   pages: {
-    signIn: "/", // custom sign-in page
+    signIn: "/",
   },
 };
 
