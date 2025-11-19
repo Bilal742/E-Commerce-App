@@ -5,7 +5,7 @@ import themeColors from '../themeColor'
 import { FiMenu, FiShoppingCart, FiUser, FiX } from 'react-icons/fi'
 import { useRouter } from 'next/navigation'
 import { useCart } from "@/app/context/CartContext";
-import SearchBar from '../../search/SearchBar'
+import SearchBar from '../../search/searchBar'
 import { signIn, signOut, useSession } from 'next-auth/react'
 
 const Navbar = () => {
