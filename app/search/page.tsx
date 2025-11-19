@@ -1,8 +1,8 @@
 "use client";
-import { useSearchParams } from "next/navigation";
 import allProducts, { Product } from "@/app/data/products";
 import themeColors from "@/app/component/themeColor";
 import { useCart } from "../context/CartContext";
+import { useSearchParams } from "next/navigation";
 
 const SearchPage = () => {
   const params = useSearchParams();
