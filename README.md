@@ -1,36 +1,108 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🌟 HoodAnix – Premium Hoodie Store (Full E-Commerce UI)
 
-## Getting Started
+Welcome to **HoodAnix**, a premium hoodie shopping experience built with **Next.js 14**, **React**, **Tailwind CSS**, and a fully functional **Cart System**, **Search System**, **Dynamic Categories**, and **Responsive UI**.
 
-First, run the development server: 
+---
 
-```bash
-npm run dev
-# or 
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## 🚀 Features
+
+### ✅ **Modern Responsive UI**
+
+* Fully mobile-first design
+* Smooth navbar interaction (auto-close on navigation)
+* Animated Hero slider
+
+### 🛒 **Shopping Features**
+
+* Add to Cart / Remove from Cart
+* Cart Badge Counter
+* Auto total price calculation
+* Clear Cart option
+
+### 🔍 **Powerful Search System**
+
+* Live suggestions while typing
+* Shows all matching products
+* Clicking suggestion = opens product instantly
+
+### 🏷️ **Dynamic Categories**
+
+* Men / Women / Unisex
+* New Arrivals
+* Best Sellers
+* Limited Edition
+
+### ⚡ **Tech Stack**
+
+* **Next.js 14 (App Router)**
+* **React 18**
+* **Tailwind CSS**
+* **Context API** (for Cart management)
+* **React Hot Toast** (for alerts)
+
+---
+
+## 📁 Project Structure
+
+```
+📦 HoodAnix
+├── 📂 app
+│   ├── 📂 component
+│   │   ├── Navbar.jsx
+│   │   ├── Hero.jsx
+│   │   └── themeColor.js
+│   ├── 📂 search
+│   │   ├── SearchBar.jsx
+│   │   └── page.jsx
+│   ├── 📂 shop
+│   │   └── page.jsx
+│   ├── 📂 cart
+│   │   └── page.jsx
+│   ├── 📂 category
+│   │   └── [slug]/page.jsx
+│   ├── layout.js
+│   └── page.js
+├── 📂 data
+│   └── products.js
+├── 📂 context
+│   └── CartContext.jsx
+└── tailwind.config.js
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🛠️ Installation
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+git clone https://github.com/YOUR_USERNAME/hoodanix.git
+cd hoodanix
+npm install
+npm run dev
+```
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## 📸 Screenshots
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+(Place your UI screenshots here)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## 🤝 Contributing
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Pull Requests are welcome! For major changes, please open an issue first.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+## 📜 License
+
+This project is licensed under the **MIT License**.
+
+---
+
+## ❤️ Developed By
+
+**Muhammad Bilal (HoodAnix Owner)**
+
+Feel free to star ⭐ the repo if you like the project!
+
