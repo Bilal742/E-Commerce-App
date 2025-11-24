@@ -7,7 +7,7 @@ HoodAnix is a **modern, responsive e-commerce website** for premium hoodies. Bui
 
 ---
 
-## 🎯 Features
+## 🎯 Features 
 
 - Fully responsive design for **desktop, tablet, and mobile**
 - **Dynamic Search** with instant suggestions and product filtering
