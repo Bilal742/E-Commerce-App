@@ -33,7 +33,7 @@ const About = () => {
         </div>
       </div>
 
-      <button style={{ background: theme.text, color: theme.background }} className="mt-16 px-8 py-3 rounded font-semibold hover:bg-gray-200 transition">
+      <button style={{ background: theme.text, color: theme.background }} className="mt-16 px-8 py-3 rounded font-semibold hover:bg-gray-200 transition cursor-pointer">
         Explore Our Collection
       </button>
     </section>

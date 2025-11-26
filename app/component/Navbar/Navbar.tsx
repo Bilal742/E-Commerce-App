@@ -11,12 +11,14 @@ import { signIn, signOut, useSession } from 'next-auth/react'
 const Navbar = () => {
     const theme = themeColors.dark;
     const [menuOpen, setMenuOpen] = useState(false);
+    const [categoriesOpen, setCategoriesOpen] = useState(false);
     const toggleMenu = () => setMenuOpen(!menuOpen);
     const router = useRouter();
     const { cart } = useCart();
     const { data: session } = useSession();
+    
+    const totalItems = cart.reduce((total: number, item: any) => total + (item.quantity || 1), 0);
 
-    // if (status === "loading") return null;
     const categories = [
         { name: "Men", slug: "men" },
         { name: "Women", slug: "women" },
@@ -41,22 +43,33 @@ const Navbar = () => {
             <ul className="hidden lg:flex gap-4 lg:gap-6 items-center">
                 <li className='cursor-pointer' onClick={() => router.push("/")}>Home</li>
                 <li className='cursor-pointer' onClick={() => router.push("/about")}>About</li>
-                <li className="relative group cursor-pointer">
-                    Categories ▼
-                    <ul
-                        style={{ background: theme.background }}
-                        className="absolute top-full left-0 mt-1 w-48 p-2 list-none opacity-0 group-hover:opacity-100 transition-opacity duration-200 shadow-lg rounded"
-                    >
-                        {categories.map((cat, index) => (
-                            <li
-                                key={index}
-                                onClick={() => router.push(`/category/${cat.slug}`)}
-                                className="p-2 hover:bg-[rgb(20,55,70)] hover:text-white cursor-pointer rounded"
-                            >
-                                {cat.name}
-                            </li>
-                        ))}
-                    </ul>
+                <li 
+                    className="relative"
+                    onMouseEnter={() => setCategoriesOpen(true)}
+                    onMouseLeave={() => setCategoriesOpen(false)}
+                >
+                    <span className="cursor-pointer">Categories ▼</span>
+                    {categoriesOpen && (
+                        <ul
+                            style={{ background: theme.background }}
+                            className="absolute top-full left-0 mt-1 w-48 p-2 list-none shadow-lg rounded z-50"
+                            onMouseEnter={() => setCategoriesOpen(true)}
+                            onMouseLeave={() => setCategoriesOpen(false)}
+                        >
+                            {categories.map((cat, index) => (
+                                <li
+                                    key={index}
+                                    onClick={() => {
+                                        router.push(`/category/${cat.slug}`);
+                                        setCategoriesOpen(false);
+                                    }}
+                                    className="p-2 hover:bg-[rgb(20,55,70)] hover:text-white cursor-pointer rounded"
+                                >
+                                    {cat.name}
+                                </li>
+                            ))}
+                        </ul>
+                    )}
                 </li>
                 <li className='cursor-pointer' onClick={() => router.push("/shop")}>Shop</li>
                 <li className='cursor-pointer' onClick={() => router.push("/contact")}>Contact</li>
@@ -72,7 +85,7 @@ const Navbar = () => {
                         <p>Welcome, {session.user?.name}</p>
                         <button
                             onClick={() => signOut({ callbackUrl: "/" })}
-                            className="px-3 py-1 bg-red-600 rounded"
+                            className="px-3 py-1 bg-red-600 rounded cursor-pointer"
                         >
                             Logout
                         </button>
@@ -92,9 +105,9 @@ const Navbar = () => {
                         className="cursor-pointer"
                         onClick={() => router.push("/cart")}
                     />
-                    {cart.length > 0 && (
+                    {totalItems > 0 && (
                         <span className="absolute -top-2 -right-2 bg-red-600 text-white text-xs px-2 py-0.5 rounded-full">
-                            {cart.length}
+                            {totalItems}
                         </span>
                     )}
                 </div>

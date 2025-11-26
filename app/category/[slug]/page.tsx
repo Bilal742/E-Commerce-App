@@ -6,15 +6,6 @@ import themeColors from "@/app/component/themeColor"
 import { useCart } from "@/app/context/CartContext"
 import allProducts from "@/app/data/products"
 
-//     // new-arrivals
-//     { id: 4, name: "New Arrivals Hoodie 1", category: "new-arrivals", price: "$48", image: "/Men_Hoodies_Collections/men12.jpg" },
-
-//     // limited-edition
-//     { id: 5, name: "Unisex Hoodie 1", category: "limited-edition", price: "$48", image: "/Men_Hoodies_Collections/men12.jpg" },
-
-//     // best-sellers
-//     { id: 5, name: "Unisex Hoodie 1", category: "best-sellers", price: "$48", image: "/Men_Hoodies_Collections/men12.jpg" },
-
 const CategoryPage = () => {
     const theme = themeColors.dark
     const params = useParams();
