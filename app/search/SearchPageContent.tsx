@@ -24,7 +24,7 @@ const SearchPage = () => {
       className="min-h-screen p-6 pt-32"
     >
       <h1 className="text-3xl font-bold mb-6">
-        {query ? `Search results for "${query}"` : "All Products"}
+        {query ? `${query}` : "All Products"}
       </h1>
 
       {filteredProducts.length === 0 ? (

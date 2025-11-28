@@ -7,6 +7,8 @@ import { useRouter } from 'next/navigation'
 import { useCart } from "@/app/context/CartContext";
 import SearchBar from '@/app/component/SearchBar'
 import { signIn, signOut, useSession } from 'next-auth/react'
+import { useEffect } from "react";
+import toast from 'react-hot-toast'
 
 const Navbar = () => {
     const theme = themeColors.dark;
@@ -16,7 +18,29 @@ const Navbar = () => {
     const toggleMenu = () => setMenuOpen(!menuOpen);
     const router = useRouter();
     const { cart } = useCart();
-    const { data: session } = useSession();
+    const { data: session, status } = useSession();
+
+    useEffect(() => {
+        if (status === "authenticated") {
+            const shown = localStorage.getItem("welcome_shown");
+
+            if (!shown) {
+                setTimeout(() => {
+                    toast.success(`Welcome, ${session.user?.name}`);
+                }, 300); // thoda wait so session fully loaded
+
+                localStorage.setItem("welcome_shown", "true");
+            }
+        }
+
+        // logout hone par reset
+        if (status === "unauthenticated") {
+            localStorage.removeItem("welcome_shown");
+        }
+
+    }, [status, session]);
+
+
     
     const totalItems = cart.reduce((total: number, item: any) => total + (item.quantity || 1), 0);
 
@@ -84,10 +108,10 @@ const Navbar = () => {
                 <div className="relative">
                     {session ? (
                         <div className="flex items-center gap-3">
-                            <p className="hidden sm:block">Welcome, {session.user?.name}</p>
+                            {/* <p className="hidden sm:block">Welcome, {session.user?.name}</p> */}
                             <button
                                 onClick={() => signOut({ callbackUrl: "/" })}
-                                className="px-3 py-1 bg-red-600 rounded cursor-pointer hover:bg-red-700 transition"
+                                className=" text-white px-3 py-1 bg-red-600 rounded cursor-pointer hover:bg-red-700 transition"
                             >
                                 Logout
                             </button>

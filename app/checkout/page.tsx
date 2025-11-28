@@ -109,7 +109,7 @@ const CheckoutPage = () => {
                                         <button
                                             type="button"
                                             className="text-green-400 hover:underline cursor-pointer"
-                                            onClick={() => router.push("/")}
+                                            onClick={() => router.push("/auth")}
                                         >
                                             Sign in
                                         </button>
