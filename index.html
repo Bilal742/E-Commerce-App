@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>JavaScript Q&A - Roman Urdu</title>
+<style>
+  body { font-family: Arial, sans-serif; margin: 20px; line-height: 1.7; }
+  h1 { text-align: center; color: #1a73e8; }
+  h2 { color: #1a73e8; margin-top: 25px; }
+  .question { font-weight: bold; margin-top: 15px; }
+  .answer { margin-left: 20px; color: #333; }
+  pre { background:#f4f4f4; padding:10px; border-radius:6px; overflow:auto; }
+</style>
+</head>
+<body>
+<h1>JavaScript – 40 Questions & Detailed Answers (Roman Urdu)</h1>
+
+<h2>JavaScript – 40 Questions</h2>
+<div class="qa">
+
+<div class="question">1. JavaScript kya hai?</div>
+<div class="answer">JavaScript ek programming language hai jo webpages ko interactive banati hai — buttons, forms, animations, API calls waghera. Browser me run hoti hai aur server-side bhi (Node.js) run kar sakti hai.</div>
+
+<div class="question">2. var, let aur const me kya farq hai?</div>
+<div class="answer">`var` function scope rakhta hai aur hoist hota hai. `let` aur `const` block scope rakhte hain. `const` ki value reassign nahi hoti. Example:
+<pre>
+var a = 1;
+let b = 2;
+const c = 3;
+</pre>
+</div>
+
+<div class="question">3. JavaScript ke basic data types kaunse hain?</div>
+<div class="answer">Primitive types: String, Number, Boolean, Null, Undefined, Symbol, BigInt. Non-primitive: Object (arrays, functions bhi objects hote hain).</div>
+
+<div class="question">4. Function declaration aur function expression me kya farq hai?</div>
+<div class="answer">Function declaration hoist hoti hai (upri se call kar sakte ho). Function expression tabhi available hoti hai jab assign ho chuki ho.
+<pre>
+function foo(){ }        // declaration
+const bar = function(){ } // expression
+</pre>
+</div>
+
+<div class="question">5. Arrow functions kya hoti hain aur kab use karte hain?</div>
+<div class="answer">Arrow function shorthand syntax hai: `const f = (a)=>a*2`. Ye apna `this` nahi banati (lexical this), isliye callbacks aur method binding me useful hai. Lekin constructor ke liye use nahi karte.</div>
+
+<div class="question">6. Hoisting kya hota hai?</div>
+<div class="answer">Hoisting JS ka behavior hai jisme declarations (functions and var variables) execution se pehle engine ne conceptually top pe le lete hain. `var` variables undefined se initialize hotay hain; `let/const` temporal dead zone me rahte hain jab tak declaration nahi hui.</div>
+
+<div class="question">7. Scope kya hota hai?</div>
+<div class="answer">Scope batata hai ke variable kis area se accessible hai: Global scope (poori file), Function scope (`var`), Block scope (`let/const`).</div>
+
+<div class="question">8. Closure kya hai? Example do.</div>
+<div class="answer">Closure ek function ko uske outer scope ke variables access karne ki ability deta hai, even jab outer function execute ho chuka ho.
+<pre>
+function outer(){
+  let x = 5;
+  return function(){ console.log(x); } // closure
+}
+const fn = outer(); fn(); // prints 5
+</pre>
+</div>
+
+<div class="question">9. What is the DOM?</div>
+<div class="answer">DOM (Document Object Model) HTML ka programmatic representation hai. JS DOM API se elements select, create, modify, delete kar sakte ho (`document.getElementById`, `querySelector` etc.).</div>
+
+<div class="question">10. How to select elements in DOM?</div>
+<div class="answer">Common methods: `document.getElementById('id')`, `document.getElementsByClassName('cls')`, `document.querySelector('.cls')`, `document.querySelectorAll('div')`.</div>
+
+<div class="question">11. Event bubbling vs capturing kya hai?</div>
+<div class="answer">Event propagation ke do phases: capturing (parent -> child) aur bubbling (child -> parent). Default listener bubbling me run hota. `addEventListener(type, fn, {capture:true})` se capturing use kar sakte ho.</div>
+
+<div class="question">12. Event delegation kya hota hai?</div>
+<div class="answer">Event delegation ek technique hai jisme parent element pe single listener lagaya jata hai aur event target check karke children handle kiye jate hain — performance aur memory ke liye acha hai.</div>
+
+<div class="question">13. What is `this` in JavaScript?</div>
+<div class="answer">`this` context depend karta hai ki function kis tarah call hua: global call me window/undefined, object method me object, constructor me new instance, arrow functions me lexical `this` (outer lexical context se lega).</div>
+
+<div class="question">14. Difference between == and ===?</div>
+<div class="answer">`==` loose equality hai (type coercion karta hai), `===` strict equality hai (type + value dono compare karta hai). Prefer `===` for predictable results.</div>
+
+<div class="question">15. What is NaN? Kaise check karte ho?</div>
+<div class="answer">NaN = Not-a-Number, numeric operation fail hone pe aata hai. `isNaN(value)` ya better `Number.isNaN(value)` se check karo. Note: `typeof NaN` = "number".</div>
+
+<div class="question">16. What is prototype?</div>
+<div class="answer">Prototype ek object hota hai jisse objects inherit karte hain. JS me functions ke `prototype` property se shared methods define karte hain; objects ke `__proto__` se lookup hota hai.</div>
+
+<div class="question">17. What is prototypal inheritance?</div>
+<div class="answer">Objects ek dusre se directly inherit karte hain through prototype chain. Agar property object pe nahi mili to JS prototype chain check karta hai.</div>
+
+<div class="question">18. What is `class` in ES6 and how is it related to prototype?</div>
+<div class="answer">`class` ES6 syntax sugar hai constructor functions + prototype ke upar. Example:
+<pre>
+class Person {
+  constructor(name){ this.name = name; }
+  greet(){ console.log('Hi', this.name); }
+}
+</pre>
+Under the hood methods `Person.prototype` pe add hoti hain.</div>
+
+<div class="question">19. What is an IIFE?</div>
+<div class="answer">IIFE = Immediately Invoked Function Expression — function jo turant execute hoti hai, mostly scope isolation ke liye:
+<pre>
+(function(){ /* code */ })();
+</pre>
+</div>
+
+<div class="question">20. What is callback function?</div>
+<div class="answer">Callback function wo function hota hai jo dusre function ko argument ke roop me diya jata hai aur future me call hota hai (e.g., event handlers, async operations).</div>
+
+<div class="question">21. What is Promise?</div>
+<div class="answer">Promise ek object hai jo async operation ka future result represent karta hai. States: pending, fulfilled, rejected. Use `.then()` and `.catch()` to handle results.</div>
+
+<div class="question">22. What is async/await?</div>
+<div class="answer">`async` function return karta hai Promise. `await` promise resolution ka wait karta hai inside async function, code synchronous jaisa likhne me madad karta hai.
+<pre>
+async function getData(){
+  const res = await fetch('/api');
+  const data = await res.json();
+}
+</pre>
+</div>
+
+<div class="question">23. Difference between callback, promise and async/await?</div>
+<div class="answer">Callback: nested callbacks lead to callback hell. Promise: better chaining and error handling. Async/await: syntax sugar over promises, easier readable code.</div>
+
+<div class="question">24. How to handle errors in async code?</div>
+<div class="answer">Promises: `.catch(err=>...)`. Async/await: use `try { await ... } catch(err){ ... }` to catch errors.</div>
+
+<div class="question">25. What is fetch API and how to use it?</div>
+<div class="answer">`fetch()` browser API for network requests. Returns a Promise. Example:
+<pre>
+fetch('/api/data')
+  .then(res => res.json())
+  .then(data => console.log(data))
+  .catch(err => console.error(err));
+</pre>
+</div>
+
+<div class="question">26. What is JSON and how to parse/stringify?</div>
+<div class="answer">JSON (JavaScript Object Notation) ek data exchange format. `JSON.parse(jsonString)` to convert to object, `JSON.stringify(obj)` to convert to string.</div>
+
+<div class="question">27. What is localStorage and sessionStorage?</div>
+<div class="answer">Browser storage APIs: `localStorage` data permanent store karta hai (until cleared). `sessionStorage` tab tak rehta hai jab tak tab session open ho. Use `localStorage.setItem('k','v')` and `getItem`.</div>
+
+<div class="question">28. What is event loop?</div>
+<div class="answer">Event loop JS runtime mechanism hai jo call stack aur task queue ko manage karta hai, async callbacks ko schedule karta hai. Ye single-threaded behavior me non-blocking IO allow karta hai.</div>
+
+<div class="question">29. What are microtasks and macrotasks?</div>
+<div class="answer">Microtasks (Promises `.then`) high priority queue; macrotasks (setTimeout, I/O). Event loop pe microtasks run hote hain before rendering and before next macrotask.</div>
+
+<div class="question">30. How to debounce and throttle?</div>
+<div class="answer">Debounce: function ko last call ke baad certain time pe run karna (useful for input). Throttle: function fixed interval me maximum ek baar run kare (useful for scroll). Example simple debounce:
+<pre>
+function debounce(fn, delay){
+  let timer;
+  return function(...args){
+    clearTimeout(timer);
+    timer = setTimeout(()=>fn.apply(this,args), delay);
+  }
+}
+</pre>
+</div>
+
+<div class="question">31. What is JSONP?</div>
+<div class="answer">JSONP purana pattern tha cross-domain requests ke liye using `<script>` tag. Ab CORS aur server-side headers zyada use hote hain. JSONP security risks bhi lata hai.</div>
+
+<div class="question">32. What is CORS?</div>
+<div class="answer">CORS (Cross-Origin Resource Sharing) browser security feature hai jisme server specific headers (`Access-Control-Allow-Origin`) set karta hai taake cross-origin requests allow ho sakein.</div>
+
+<div class="question">33. How to manipulate classes on an element?</div>
+<div class="answer">Use `element.classList.add('cls')`, `.remove()`, `.toggle('cls')`, `.contains('cls')` for easy class manipulation.</div>
+
+<div class="question">34. How to create and append elements?</div>
+<div class="answer">Use `document.createElement('div')`, set properties, then `parent.appendChild(child)` or `parent.append(child)`; or use `insertAdjacentHTML` for HTML string injection.</div>
+
+<div class="question">35. What are template literals?</div>
+<div class="answer">Template literals backticks `` ke andar strings hote hain jisme `${var}` interpolation aur multi-line strings possible hoti hain.
+<pre>
+const name = 'Bilal';
+console.log(`Hello ${name}`);
+</pre>
+</div>
+
+<div class="question">36. What is destructuring?</div>
+<div class="answer">Destructuring se arrays/objects ke values ko directly variables me assign karte hain:
+<pre>
+const [a,b] = [1,2];
+const {name,age} = {name:'Bilal', age:25};
+</pre>
+</div>
+
+<div class="question">37. What is rest and spread operator?</div>
+<div class="answer">`...` operator: spread arrays/objects into elements; rest collects remaining items into array. Examples:
+<pre>
+const arr = [1,2,3];
+const newArr = [...arr,4]; // spread
+function fn(...args){ console.log(args); } // rest
+</pre>
+</div>
+
+<div class="question">38. What are higher-order functions?</div>
+<div class="answer">Functions that accept functions as arguments or return functions. Examples: `map`, `filter`, `reduce`, also custom HOFs like `debounce`.</div>
+
+<div class="question">39. Difference between map, forEach, filter and reduce?</div>
+<div class="answer">`map` returns new array transformed, `forEach` iterates without returning, `filter` returns new array matching condition, `reduce` reduces array to single value using accumulator.</div>
+
+<div class="question">40. How to handle modules in JavaScript?</div>
+<div class="answer">ES6 modules: `export` and `import`. Browser me `<script type="module">` use karo or bundlers (Webpack, Vite) production ke liye. Example:
+<pre>
+// math.js
+export function add(a,b){ return a+b; }
+// main.js
+import { add } from './math.js';
+</pre>
+</div>
+
+</div>
+</body>
+</html>
