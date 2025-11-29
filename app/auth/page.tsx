@@ -93,7 +93,7 @@ const AuthPage = () => {
                     <button
                         onClick={handleGoogleSignIn}
                         className="w-full flex items-center justify-center gap-3 px-4 py-3 bg-white text-gray-800 rounded-lg font-semibold hover:bg-gray-100 transition mb-6 cursor-pointer"
-                    >
+                    >   
                         <svg className="w-5 h-5" viewBox="0 0 24 24">
                             <path fill="#4285F4" d="M22.5 12c0-.75-.07-1.48-.2-2.18H12v4.13h5.1c-.22 1.16-.88 2.14-1.88 2.8v2.33h3.04c1.78-1.64 2.8-4.05 2.8-6.88z" />
                             <path fill="#34A853" d="M12 23c2.7 0 4.96-.9 6.62-2.44l-3.04-2.33c-.85.57-1.94.9-3.58.9-2.75 0-5.08-1.85-5.91-4.33H3.02v2.72C4.64 20.79 8.05 23 12 23z" />
