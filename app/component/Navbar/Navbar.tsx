@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react'
 import themeColors from '../themeColor'
-import { FiMenu, FiShoppingCart, FiUser, FiX } from 'react-icons/fi'
+import { FiLogOut, FiMenu, FiShoppingCart, FiUser, FiX } from 'react-icons/fi'
 import { useRouter } from 'next/navigation'
 import { useCart } from "@/app/context/CartContext";
 import SearchBar from '@/app/component/SearchBar'
@@ -104,9 +104,9 @@ const Navbar = () => {
                         <div className="flex items-center gap-3">
                             <button
                                 onClick={() => signOut({ callbackUrl: "/" })}
-                                className="text-white px-3 py-1 bg-red-600 rounded cursor-pointer hover:bg-red-700 transition"
+                                className="flex items-center gap-2 text-black px-3 py-1 rounded cursor-pointer"
                             >
-                                Logout
+                                <FiLogOut className="w-5 h-5" /> Logout
                             </button>
                         </div>
                     ) : (
