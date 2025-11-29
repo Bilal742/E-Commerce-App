@@ -19,7 +19,7 @@ export const CartProvider = ({ children }) => {
                         ? { ...item, quantity: (item.quantity || 1) + 1 }
                         : item
                 )
-            );
+            );   
         } else {
             setCart((prev) => [
                 ...prev,
@@ -76,7 +76,6 @@ export const CartProvider = ({ children }) => {
         return false;
     };
 
-    // Ensure all cart items have a size
     const cartWithSizes = cart.map(item => ({
         ...item,
         size: item.size || "M"

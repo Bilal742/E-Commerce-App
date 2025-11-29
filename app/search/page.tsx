@@ -5,4 +5,5 @@ const SearchPageContent = dynamic(() => import("./SearchPageContent"), { ssr: fa
 
 export default function Page() {
   return <SearchPageContent />;
-}
+};
+  

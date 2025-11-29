@@ -27,7 +27,6 @@ const SearchBar = () => {
     const filtered = allProducts.filter((item) =>
       item.name.toLowerCase().includes(value.toLowerCase())
     );
-
     setSuggestions(filtered);
   };
 
@@ -60,10 +59,9 @@ const SearchBar = () => {
     setSearchText("");
     setSuggestions([]);
     setHighlightIndex(-1);
-    router.push(`/product/${item.id}`); // ✅ Redirect to product 3D detail page
+    router.push(`/product/${item.id}`);
   };
 
-  // Close suggestions if click outside
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
       if (wrapperRef.current && !wrapperRef.current.contains(e.target as Node)) {
@@ -77,20 +75,14 @@ const SearchBar = () => {
 
   return (
     <div ref={wrapperRef} className="relative w-full max-w-md mx-auto">
-      {/* Input */}
       <input
         value={searchText}
         onChange={handleChange}
         onKeyDown={handleKeyDown}
         placeholder="Search hoodies..."
-        style={{
-          background: theme.background,
-          color: theme.text,
-        }}
-        className="w-full p-3 rounded-xl placeholder-gray-400 outline-none transition-transform "
+        style={{ background: theme.background, color: theme.text }}
+        className="w-full p-3 rounded-xl placeholder-gray-400 outline-none transition-transform"
       />
-
-      {/* Suggestions */}
       {suggestions.length > 0 && (
         <div className="absolute top-full mt-2 w-90 bg-white shadow-2xl rounded-xl z-50 max-h-80 overflow-y-auto">
           {suggestions.map((item, index) => (

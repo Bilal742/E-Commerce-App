@@ -52,3 +52,4 @@ const HomeCategoriesSection = () => {
 };
 
 export default HomeCategoriesSection;
+   

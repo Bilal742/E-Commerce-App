@@ -311,7 +311,7 @@ const CheckoutPage = () => {
                     Phone number <span className="text-red-400">*</span>
                   </label>
                   <input
-                    type="tel"
+                    type="tel"  
                     name="phoneNumber"
                     value={formData.phoneNumber}
                     onChange={handleChange}

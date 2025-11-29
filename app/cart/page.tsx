@@ -67,7 +67,6 @@ const CartPage = () => {
             ) : (
                 <div className="max-w-7xl mx-auto">
                     <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-                        {/* Cart Items */}
                         <div className="lg:col-span-2 space-y-4">
                             {cart.map((item: CartItem, index: number) => {
                                 const itemPrice = Number(item.price.replace("$", ""));
@@ -82,7 +81,6 @@ const CartPage = () => {
                                         className="bg-white/5 border border-white/10 rounded-lg p-6 hover:shadow-xl transition-all duration-300"
                                     >
                                         <div className="flex flex-col md:flex-row gap-6">
-                                            {/* Image Section */}
                                             <div
                                                 className="relative w-full md:w-64 h-64 overflow-hidden rounded-lg cursor-pointer group"
                                                 onClick={() => handleImageClick(item.image)}
@@ -99,7 +97,6 @@ const CartPage = () => {
                                                 </div>
                                             </div>
 
-                                            {/* Details Section */}
                                             <div className="flex-1 flex flex-col justify-between">
                                                 <div>
                                                     <h2 className="font-bold text-xl mb-2">{item.name}</h2>
@@ -107,8 +104,7 @@ const CartPage = () => {
                                                         {item.price} {quantity > 1 && `× ${quantity} = $${itemTotal.toFixed(2)}`}
                                                     </p>
                                                 </div>
-
-                                                {/* Size Selector */}
+                                                
                                                 <div className="flex items-center gap-4 mb-4">
                                                     <span className="text-sm font-medium">Size:</span>
                                                     <select
@@ -124,7 +120,6 @@ const CartPage = () => {
                                                     </select>
                                                 </div>
 
-                                                {/* Quantity Controls */}
                                                 <div className="flex items-center gap-4 mb-4">
                                                     <span className="text-sm font-medium">Quantity:</span>
                                                     <div className="flex items-center gap-2 border border-white/20 rounded-lg">
@@ -162,12 +157,10 @@ const CartPage = () => {
                             })}
                         </div>
 
-                        {/* Order Summary */}
                         <div className="lg:col-span-1">
                             <div className="bg-white/5 border border-white/10 rounded-lg p-6 sticky top-24">
                                 <h2 className="text-2xl font-bold mb-6">Order Summary</h2>
 
-                                {/* Discount Code */}
                                 <div className="mb-6">
                                     <label className="block text-sm font-medium mb-2">Discount Code</label>
                                     {!discountApplied ? (
@@ -209,7 +202,6 @@ const CartPage = () => {
                                     </p>
                                 </div>
 
-                                {/* Price Breakdown */}
                                 <div className="space-y-3 mb-6">
                                     <div className="flex justify-between text-sm">
                                         <span>Subtotal</span>
@@ -227,12 +219,9 @@ const CartPage = () => {
                                     </div>
                                 </div>
 
-                                {/* Action Buttons */}
                                 <div className="space-y-3">
                                     <button
-                                        onClick={() => {
-                                            router.push("/checkout");
-                                        }}
+                                        onClick={() => router.push("/checkout")}
                                         className="w-full bg-green-600 hover:bg-green-700 px-6 py-3 rounded-lg text-white font-semibold transition-colors cursor-pointer"
                                     >
                                         Proceed to Checkout
@@ -253,7 +242,6 @@ const CartPage = () => {
                 </div>
             )}
 
-            {/* Image Modal/Slider */}
             {selectedImage && (
                 <div
                     className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4"

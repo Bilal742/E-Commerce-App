@@ -124,16 +124,6 @@ const Navbar = () => {
                                     className="absolute top-full right-0 mt-2 w-56 p-2 shadow-lg rounded z-50 border border-white/10"
                                     onMouseLeave={() => setUserMenuOpen(false)}
                                 >
-                                    {/* <button
-                                        onClick={() => {
-                                            signIn("google", { callbackUrl: "/" });
-                                            setUserMenuOpen(false);
-                                        }}
-                                        className="w-full text-left px-4 py-2 hover:bg-white/10 rounded cursor-pointer transition mb-2"
-                                    >
-                                        Continue with Google
-                                    </button> */}
-
                                     <button
                                         onClick={() => {
                                             router.push("/auth");

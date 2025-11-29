@@ -6,4 +6,4 @@ export interface NewsletterForm {
     image: string;
     category: string;
     description: string;
-}
+};

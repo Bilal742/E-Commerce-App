@@ -18,7 +18,7 @@ const services = [
       "High-quality digital & embroidery printing for your personalized designs.",
     icon: <FiEdit3 size={45} />,
   },
-  {
+  {  
     title: "Fast Nationwide Delivery",
     description:
       "Lightning-fast delivery with safe packaging all over Pakistan.",

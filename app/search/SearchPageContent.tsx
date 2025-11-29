@@ -11,7 +11,6 @@ const SearchPage = () => {
 
   const { addToCart } = useCart();
 
-  // Filter products safely
   const filteredProducts: Product[] = allProducts.filter(
     (item) =>
       item.name.toLowerCase().includes(query) ||

@@ -21,7 +21,7 @@ const HomeContactSection = () => {
     ...formData,
     [e.target.name]: e.target.value,
   });
-};
+};  
 
 
   const showToast = (message: string, type = "success") => {

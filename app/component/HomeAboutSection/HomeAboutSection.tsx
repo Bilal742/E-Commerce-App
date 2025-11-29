@@ -43,6 +43,6 @@ const HomeAboutSection = () => {
             </div>
         </section>
     )
-}
+}  
 
 export default HomeAboutSection

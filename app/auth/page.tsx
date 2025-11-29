@@ -40,7 +40,7 @@ const AuthPage = () => {
                 toast.error("Invalid email or password!");
             } else {
                 toast.success("Logged in successfully!");
-                router.push("/"); // navbar me logout button dikhne lagega
+                router.push("/");
             }
 
         } else {
@@ -54,7 +54,6 @@ const AuthPage = () => {
                 return;
             }
 
-            // Backend ko POST request (dummy example)
             const res = await fetch("/api/signup", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
@@ -63,7 +62,7 @@ const AuthPage = () => {
 
             if (res.ok) {
                 toast.success("Signup successful! Please login.");
-                setIsLogin(true); // auto login page par bhej do
+                setIsLogin(true);
                 setFormData({
                     name: "",
                     email: "",
@@ -91,7 +90,6 @@ const AuthPage = () => {
                         {isLogin ? "Login" : "Sign Up"}
                     </h1>
 
-                    {/* Google Sign In */}
                     <button
                         onClick={handleGoogleSignIn}
                         className="w-full flex items-center justify-center gap-3 px-4 py-3 bg-white text-gray-800 rounded-lg font-semibold hover:bg-gray-100 transition mb-6 cursor-pointer"

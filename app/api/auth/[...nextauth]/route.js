@@ -48,7 +48,7 @@ export const authOptions = {
   },
 
   pages: {
-    signIn: "/auth", // tumhara login/signup page
+    signIn: "/auth",
   },
 };
 
