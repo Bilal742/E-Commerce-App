@@ -11,7 +11,6 @@ const SearchBar = () => {
   const [highlightIndex, setHighlightIndex] = useState<number>(-1);
   const router = useRouter();
   const theme = themeColors.dark;
-
   const wrapperRef = useRef<HTMLDivElement>(null);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {

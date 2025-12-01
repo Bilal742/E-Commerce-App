@@ -60,9 +60,15 @@ const CartPage = () => {
             </h1>
 
             {cart.length === 0 ? (
-                <div className="text-center py-20">
+                <div className="text-center py-20 flex justify-center items-center flex-col">
                     <p className="text-xl mb-4">Your cart is empty.</p>
-                    <p className="text-gray-400">Start shopping to add items!</p>
+                    <button
+                        onClick={() => router.push("/shop")}
+                        className="flex justify-center cursor-pointer items-center gap-2 bg-[rgb(20,55,70)] hover:bg-[rgb(18,50,65)] text-white px-4 py-3 rounded transition"
+                    >
+                        <FiShoppingBag className="w-5 h-5" />
+                        Start shopping to add items!
+                    </button>
                 </div>
             ) : (
                 <div className="max-w-7xl mx-auto">
@@ -104,7 +110,7 @@ const CartPage = () => {
                                                         {item.price} {quantity > 1 && `× ${quantity} = $${itemTotal.toFixed(2)}`}
                                                     </p>
                                                 </div>
-                                                
+
                                                 <div className="flex items-center gap-4 mb-4">
                                                     <span className="text-sm font-medium">Size:</span>
                                                     <select
