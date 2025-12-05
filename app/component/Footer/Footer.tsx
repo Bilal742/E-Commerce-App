@@ -9,7 +9,7 @@ import {
   FiMail,
   FiPhone,
 } from "react-icons/fi";
-import themeColors from "../themeColor";
+import themeColors from "../themeColors/themeColor";
 import { useRouter } from "next/navigation";
 
 const Footer = () => {

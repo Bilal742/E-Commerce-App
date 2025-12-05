@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useCart } from "../context/CartContext";
-import themeColors from "@/app/component/themeColor";
+import themeColors from "@/app/component/themeColors/themeColor";
 import { toast } from "react-hot-toast";
 import { FiShoppingBag } from "react-icons/fi";
 import { useSession } from "next-auth/react";

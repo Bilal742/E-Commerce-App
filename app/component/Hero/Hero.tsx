@@ -1,7 +1,7 @@
 "use client"
 
 import React, { useState, useEffect } from 'react'
-import themeColors from '../themeColor'
+import themeColors from '../themeColors/themeColor'
 import { useRouter } from 'next/navigation';
 
 const Hero = () => {

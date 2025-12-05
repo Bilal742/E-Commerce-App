@@ -3,7 +3,7 @@
 import React from "react";
 import { FiTruck, FiRepeat, FiShield, FiEdit3 } from "react-icons/fi";
 import { motion } from "framer-motion";
-import themeColors from "../themeColor";
+import themeColors from "../themeColors/themeColor";
 
 const services = [
   {

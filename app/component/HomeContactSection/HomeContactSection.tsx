@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { FiMail, FiPhone, FiMapPin } from "react-icons/fi";
-import themeColors from "../themeColor";
+import themeColors from "../themeColors/themeColor";
 
 const HomeContactSection = () => {
   const theme = themeColors.dark;

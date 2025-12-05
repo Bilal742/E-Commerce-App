@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import { signIn } from "next-auth/react";
-import themeColors from "@/app/component/themeColor";
+import themeColors from "@/app/component/themeColors/themeColor";
 import { toast } from "react-hot-toast";
 import { FiUser, FiMail, FiLock } from "react-icons/fi";
 

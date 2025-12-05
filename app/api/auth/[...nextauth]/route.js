@@ -20,21 +20,24 @@ export const authOptions = {
         password: { label: "Password", type: "password" },
       },
 
-      async authorize(credentials) {
-        await connectDB();
+async authorize(credentials) {
+  if (!credentials?.email || !credentials?.password) return null;
 
-        const user = await User.findOne({ email: credentials.email });
-        if (!user) return null;
+  await connectDB();
 
-        const isValid = await bcrypt.compare(credentials.password, user.password);
-        if (!isValid) return null;
+  const user = await User.findOne({ email: credentials.email });
+  if (!user) return null;
 
-        return {
-          id: user._id.toString(),
-          name: user.name,
-          email: user.email,
-        };
-      },
+  const isValid = await bcrypt.compare(credentials.password, user.password);
+  if (!isValid) return null;
+
+  return {
+    id: user._id.toString(),
+    name: user.name,
+    email: user.email,
+  };
+}
+
     }),
   ],
 

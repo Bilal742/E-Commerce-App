@@ -1,11 +1,11 @@
 "use client"
 
 import React, { useState, useEffect } from 'react'
-import themeColors from '../themeColor'
+import themeColors from '../themeColors/themeColor'
 import { FiLogOut, FiMenu, FiShoppingCart, FiUser, FiX } from 'react-icons/fi'
 import { useRouter } from 'next/navigation'
 import { useCart } from "@/app/context/CartContext";
-import SearchBar from '@/app/component/SearchBar'
+import SearchBar from '@/app/component/SearchBar/SearchBar'
 import { signIn, signOut, useSession } from 'next-auth/react'
 import toast from 'react-hot-toast'
 
@@ -160,7 +160,7 @@ const Navbar = () => {
             {menuOpen && (
                 <ul
                     style={{ background: theme.background }}
-                    className="absolute top-full left-0 w-full flex flex-col gap-2 p-4 lg:hidden shadow-lg"
+                    className="absolute top-full h-screen left-0 w-full flex flex-col gap-2 p-4 lg:hidden shadow-lg"
                 >
                     <li
                         className='cursor-pointer py-1'
@@ -176,19 +176,22 @@ const Navbar = () => {
                         About
                     </li>
 
-                    <li className="cursor-pointer py-1">
-                        Categories
-                        <ul className="pl-4 mt-1 flex flex-col gap-1">
-                            {categories.map((cat, index) => (
-                                <li
-                                    key={index}
-                                    className="cursor-pointer py-1"
-                                    onClick={() => { router.push(`/category/${cat.slug}`); setMenuOpen(false); }}
-                                >
-                                    {cat.name}
-                                </li>
-                            ))}
+                    <li
+                      className='relative'
+                      onMouseEnter={() => setCategoriesOpen(true)}
+                      onMouseLeave={() => setCategoriesOpen(false)}
+                    >
+                      <span className='cursor-pointer'>Categories ▼</span>
+                      {categoriesOpen && (
+                        <ul className='
+                      absolute top-full left-18 mt-1 w-48 p-2 list-none shadow-lg rounded z-50 cursor-pointer
+                      
+                      '>
+                          {categories.map((cat, index) => (
+                            <li className='p-2 hover:bg-[rgb(20,55,70)] hover:text-white cursor-pointer rounded' key={index}>{cat.name}</li>
+                          ))}
                         </ul>
+                      )}
                     </li>
 
                     <li
@@ -206,7 +209,7 @@ const Navbar = () => {
                     </li>
 
                     <div className="mt-2">
-                        <SearchBar />
+                        <SearchBar onSearch={() => setMenuOpen(false)} />
                     </div>
                 </ul>
             )}

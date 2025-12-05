@@ -3,9 +3,13 @@
 import { useState, useRef, useEffect, KeyboardEvent } from "react";
 import { useRouter } from "next/navigation";
 import allProducts, { Product } from "@/app/data/products";
-import themeColors from "@/app/component/themeColor";
+import themeColors from "@/app/component/themeColors/themeColor";
 
-const SearchBar = () => {
+interface SearchBarProps {
+  onSearch?: () => void;
+}
+
+const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
   const [searchText, setSearchText] = useState<string>("");
   const [suggestions, setSuggestions] = useState<Product[]>([]);
   const [highlightIndex, setHighlightIndex] = useState<number>(-1);
@@ -51,6 +55,8 @@ const SearchBar = () => {
         setSearchText("");
         setSuggestions([]);
       }
+
+      if (onSearch) onSearch();
     }
   };
 
@@ -59,6 +65,7 @@ const SearchBar = () => {
     setSuggestions([]);
     setHighlightIndex(-1);
     router.push(`/product/${item.id}`);
+    if (onSearch) onSearch();
   };
 
   useEffect(() => {

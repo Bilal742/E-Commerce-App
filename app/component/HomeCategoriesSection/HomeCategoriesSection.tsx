@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import themeColors from "../themeColor";
+import themeColors from "../themeColors/themeColor";
 import { FiChevronRight } from "react-icons/fi";
 import { useRouter } from "next/navigation";
 

@@ -1,7 +1,7 @@
 "use client";
 
 import React from 'react';
-import themeColors from '../component/themeColor';
+import themeColors from '../component/themeColors/themeColor';
 import { useRouter } from 'next/navigation';
 
 const About = () => {

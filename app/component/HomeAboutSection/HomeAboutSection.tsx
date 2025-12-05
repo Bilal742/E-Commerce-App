@@ -1,7 +1,7 @@
 "use client"
 
 import React from 'react'
-import themeColors from '../themeColor'
+import themeColors from '../themeColors/themeColor'
 
 const HomeAboutSection = () => {
     const theme = themeColors.dark;

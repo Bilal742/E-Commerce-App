@@ -2,7 +2,7 @@
 
 import React from "react";
 import { useParams, useRouter } from "next/navigation";
-import themeColors from "@/app/component/themeColor";
+import themeColors from "@/app/component/themeColors/themeColor";
 import allProducts from "@/app/data/products";
 
 const CategoryPage = () => {

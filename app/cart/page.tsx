@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
-import themeColors from "@/app/component/themeColor";
+import themeColors from "@/app/component/themeColors/themeColor";
 import { useCart } from "../context/CartContext";
 import { toast } from "react-hot-toast";
 import { FiX, FiPlus, FiMinus, FiShoppingBag } from "react-icons/fi";

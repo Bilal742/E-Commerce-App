@@ -3,7 +3,7 @@
 import React from "react";
 import { FiChevronRight } from "react-icons/fi";
 import { useRouter } from "next/navigation";
-import themeColors from "../component/themeColor";
+import themeColors from "../component/themeColors/themeColor";
 
 const categories = [
     { name: "Men", slug: "men", image: "/Category_Img/bg.jpg" },

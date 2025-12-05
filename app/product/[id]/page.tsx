@@ -4,7 +4,7 @@ import React, { useRef, useState, useEffect, MouseEvent } from "react";
 import { useParams, useRouter } from "next/navigation";
 import allProducts, { Product } from "@/app/data/products";
 import { useCart } from "@/app/context/CartContext";
-import themeColors from "@/app/component/themeColor";
+import themeColors from "@/app/component/themeColors/themeColor";
 
 const ProductDetailPage: React.FC = () => {
   const theme = themeColors.dark;

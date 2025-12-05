@@ -1,6 +1,6 @@
 "use client";
 import allProducts, { Product } from "@/app/data/products";
-import themeColors from "@/app/component/themeColor";
+import themeColors from "@/app/component/themeColors/themeColor";
 import { useCart } from "../context/CartContext";
 import { useSearchParams } from "next/navigation";
 
