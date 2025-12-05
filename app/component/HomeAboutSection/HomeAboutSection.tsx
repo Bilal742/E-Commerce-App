@@ -31,7 +31,7 @@ const HomeAboutSection = () => {
                             <span>Years of Style</span>
                         </div>
                     </div>
-
+  
                 </div>
                 <div className="lg:w-1/2">
                     <img
